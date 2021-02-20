@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model List<CovidDashboardPOC.Models.CovidDataViewModel>
+<script src="@Url.Content("~/Scripts/Manager/dashboardManager.js")"></script>
+<h2>Covid Dashboard</h2>
+
+<div class="container" id="container">
+    <main class="main bg-dark">
+        <div class="main-overview text-white">
+            <div class="grid-cards" id="list">
+                <div class="card">
+                    <div id="grid">
+                        <div id="locationsGrid"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12" style="float:left;margin-top:10px;">
+            @for (var i = 0; i < Model.Count; i++)
+            {
+                <div class="col-4" style="background-color:red;height:230px;width:300px;float:left;padding-left:10px;margin-left:10px;margin-right:10px">
+                   <div class="col-12" style="font-size:30px;margin-left:30%;color:white;margin-top:10px">@Model[i].LocationName</div> 
+                    <div class="col-12" style="font-size:20px;margin-left:10%;color:white;margin-top:10px">Active Cases : @Model[i].ActiveCases</div> 
+                    <div class="col-12" style="font-size:20px;margin-left:10%;color:white;margin-top:10px">Discharge Cases : @Model[i].DischargedCases</div> 
+                    <div class="col-12" style="font-size:20px;margin-left:10%;color:white;margin-top:10px">Death : @Model[i].Deaths</div> 
+                </div>
+            }
+
+
+        </div>
+    </main>
+</div>
+
